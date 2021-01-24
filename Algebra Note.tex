@@ -14,6 +14,9 @@
 \newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
 \makeatother
 
+%自定义命令
+
+
 \begin{document}
 
 \title{读书笔记}
@@ -306,6 +309,42 @@ $a^{-1}bA=A \Leftrightarrow a^{-1}b \in A$，上述等价关系也可写成如�
     映射$f:G \to \mathbb{Z}_p, g^i \mapsto i$显然是$G$到$\mathbb{Z}_p$的同构。
 \end{proof}
 
+下面介绍两个对整体把握有帮助的定理：
+\subparagraph{定理3} 设$g$和$h$是群$G$中元素。\\
+（1）若$g$是$n$阶元素，则对每个正整数$m$，$g^m$的阶是$\frac{n}{(n,m)}$。\\
+（2）若$gh=hg$，元素$g$和$h$的阶分别为$m$和$n$，且$(m,n)=1$，则$gh$的阶为$mn$。
+\begin{proof}
+    （1）\\
+    \begin{center}
+    \begin{tikzpicture}
+        \draw[->] (-0.5,0)--(8.5,0);
+        \foreach \x in {0,1,...,8}
+        \draw (\x,0.2)--(\x,0);
+        \node at (0,0)[below]{0};
+        \node at (4,0)[below]{$m$};
+        \node at (6,0)[below]{$n$};
+    \end{tikzpicture}        
+    \end{center}
+
+    显然我们可以先求出$[n,m]$，$g^m$的阶自然为$[n,m]/m=\frac{n}{(n,m)}$。下面来证明这一点：\\
+    设$g^m$的阶为$N$，$(g^m)^{\frac{n}{(n,m)}}=(g^n)^{\frac{m}{(n,m)}}=e \Rightarrow N|\frac{n}{(n,m)}$；
+    $(g^m)^N=g^{mN}=e \Rightarrow n|mN \Rightarrow \frac{n}{(n,m)}|\frac{m}{(n,m)}N \Rightarrow \frac{n}{(n,m)}|N$。
+    故$N=\frac{n}{(n,m)}$。
+
+    ~\\
+    （2）设$gh$的阶为$N$，显然$(gh)^{mn}=e \Rightarrow N|mn$。我们只需证明$mn|N$，
+    而$mn|N \Leftrightarrow m|N,n|N(\text{由于}(m,n)=1)$。
+    考虑$g^n$，它的阶为$m$，又有$g^n=g^nh^n=(gh)^n$，故$g^n$的阶又等于$\frac{N}{(n,N)}$，
+    所以$m=\frac{N}{(n,N)} \Rightarrow m|N$。同理$n|N$，证毕。
+\end{proof}
+
+对于定理3中的（2），自然要问$(n,m)=r \neq 1$时$gh$的阶为多少，仿效（1）可做猜想$ord(gh)=[m,n]$，
+但很快能找到一个反例：$g=h=a,ord(a)=4,ord(gh)=2 \neq [4,4]$。而当$\langle g \rangle \bigcap \langle h \rangle = \{e\}$时，
+仍设$ord(gh)=N$，$g^Nh^N=e \Rightarrow g^N = h^{-N}$，即只能有$g^N=h^N=e$。
+则$m|N, n|N \Rightarrow [m,n]|N$，$N|[m,n]$显然，故在这种情况下$N=[m,n]$，这对我们来说已经足够。
+
+\subparagraph{定理4} 
+
 \subsubsection*{习题解答}
 16.设$G$是有限阿贝尔群，试证：$g$对应到$g^k$是$G$的一个自同构当且仅当$k$与$|G|$互素。
 
@@ -331,6 +370,8 @@ $k\overline{x_1} \neq k\overline{x_2} \Leftrightarrow k(x_2-x_1) \not\equiv 0 \p
 $N\lhd G$
 
 \subsection{正规子群、商群和同态定理}
+
+$$a$$
 
 \subsection{置换群}
 
